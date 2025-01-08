@@ -33,7 +33,7 @@
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     },
-    "/extract": {
+    "./extract": {
       "import": "./dist/extract.mjs",
       "require": "./dist/extract.cjs",
       "types": "./dist/extract.d.ts"
