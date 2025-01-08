@@ -1,4 +1,4 @@
-import round from 'lodash/round.js';
+import { round } from './round';
 
 const FILE_SIZE = {
   BYTE: {
