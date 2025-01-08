@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
-    "@release-it/conventional-changelog": "9.0.4",
+    "@release-it/conventional-changelog": "10.0.0",
     "@rollup/plugin-typescript": "^12.1.2",
     "@tsconfig/node18": "^18.2.4",
     "@types/lodash": "^4.17.13",
@@ -64,7 +64,7 @@
     "husky": "^8.0.3",
     "memfs": "^4.15.1",
     "prettier": "^3.4.2",
-    "release-it": "17.11.0",
+    "release-it": "18.0.0",
     "rollup": "^4.29.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.2",
