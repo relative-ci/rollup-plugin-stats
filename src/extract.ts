@@ -1,4 +1,4 @@
-import { OutputAsset, OutputBundle, OutputChunk, RenderedModule } from 'rollup';
+import type { OutputAsset, OutputBundle, OutputChunk, RenderedModule } from 'rollup';
 import { omit } from './utils/omit';
 import { type ExcludeFilepathPatterns, checkExcludeFilepath } from './utils/check-exclude-filepath';
 
@@ -15,7 +15,7 @@ export type ChunkStats = Omit<OutputChunk, 'code' | 'modules'> & {
   modules: Record<string, ModuleStats>;
 };
 
-export type Stats = Record<string, AssetStats | ChunkStats>;
+export type Stats = OutputBundle;
 
 export type StatsOptions = {
   /**
