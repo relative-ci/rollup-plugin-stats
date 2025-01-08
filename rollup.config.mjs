@@ -3,6 +3,7 @@ import typescript from '@rollup/plugin-typescript';
 
 const INPUT = {
   index: './src/index.ts',
+  extract: './src/extract.ts',
 };
 
 const OUTPUT_DIR = 'dist';
