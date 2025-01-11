@@ -15,7 +15,7 @@ export type ChunkStats = Omit<OutputChunk, 'code' | 'modules'> & {
   modules: Record<string, ModuleStats>;
 };
 
-export type Stats = OutputBundle;
+export type Stats = Record<string, AssetStats | ChunkStats>;
 
 export type StatsOptions = {
   /**
