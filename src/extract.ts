@@ -49,7 +49,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
 
       // Skip asset source if options source is false
       if (!source) {
-        assetStats = omit(assetStats, 'source');
+        assetStats = omit(assetStats, ['source']); 
       }
 
       output[bundleEntryFilepath] = assetStats;
@@ -62,7 +62,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
 
       // Skip chunk source if options source is false
       if (!source) {
-        chunkStats = omit(chunkStats, 'code');
+        chunkStats = omit(chunkStats, ['code']);
       }
 
       // Extract chunk modules stats
@@ -78,7 +78,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
 
         // Skip module source if options source is false
         if (!source) {
-          moduleStats = omit(moduleStats, 'code');
+          moduleStats = omit(moduleStats, ['code']);
         }
 
         chunkModulesStats[bundleModuleFilepath] = moduleStats;

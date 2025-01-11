@@ -1,12 +1,13 @@
-export function omit(
-  data: { [key: string]: unknown },
-  keys: Array<string>
-): { [key: string]: unknown } {
-  const result = {};
+export function omit<D extends object, K extends keyof D>(
+  data: D,
+  keys: K[],
+): Omit<D, K> {
+  const result = {} as D;
+  const objectKeys = Object.keys(data) as Array<K>;
 
-  Object.entries(data).forEach(([key, value]) => {
+  objectKeys.forEach((key) => {
     if (!keys.includes(key)) {
-      result[key] = value;
+      result[key] = data[key];
     }
   });
 
