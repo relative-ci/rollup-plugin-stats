@@ -1,6 +1,6 @@
 import path from 'node:path';
 import process from 'node:process';
-import type { Plugin } from 'rollup';
+import type { Plugin, OutputOptions } from 'rollup';
 
 import extractRollupStats, { type StatsOptions } from './extract';
 import { type RollupStatsWrite, rollupStatsWrite } from './write';
@@ -26,12 +26,18 @@ export type RollupStatsOptions = {
   write?: RollupStatsWrite;
 };
 
-function rollupStats(options: RollupStatsOptions = {}): Plugin {
-  const { fileName, stats: statsOptions, write = rollupStatsWrite } = options;
+type RollupStatsOptionsOrOutputOptions =
+  | RollupStatsOptions
+  | ((outputOptions: OutputOptions) => RollupStatsOptions);
 
+
+function rollupStats(options: RollupStatsOptionsOrOutputOptions): Plugin {
   return {
     name: PLUGIN_NAME,
     async generateBundle(context, bundle) {
+      const resolvedOptions = typeof options === 'function' ? options(context) : options;
+      const { fileName, stats: statsOptions, write = rollupStatsWrite } = resolvedOptions || {};
+
       const resolvedFileName = fileName || DEFAULT_FILE_NAME;
       const filepath = path.isAbsolute(resolvedFileName)
         ? resolvedFileName

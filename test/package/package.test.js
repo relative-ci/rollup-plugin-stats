@@ -4,7 +4,7 @@ import { describe, test, expect, beforeEach } from 'vitest';
 import { rollup } from 'rollup';
 import { vol } from 'memfs';
 
-import config, { relativeFileNameConfig, absoluteFileNameConfig } from './rollup.config';
+import config, { dynamicOptions, relativeFileNameConfig, absoluteFileNameConfig } from './rollup.config';
 
 describe('package test', () => {
   beforeEach(() => {
@@ -16,6 +16,17 @@ describe('package test', () => {
     await bundle.generate(config.output);
 
     const actual = await fs.readFile(path.join(config.output.dir, 'stats.json'), 'utf8');
+    const stats = JSON.parse(actual);
+    expect(stats['index.js']).toMatchObject({
+      fileName: 'index.js',
+    });
+  });
+
+  test('should output stats JSON file with explicit compilation file name', async () => {
+    const bundle = await rollup(dynamicOptions);
+    await bundle.generate(config.output);
+
+    const actual = await fs.readFile(path.join(config.output.dir, 'stats.es.json'), 'utf8');
     const stats = JSON.parse(actual);
     expect(stats['index.js']).toMatchObject({
       fileName: 'index.js',
