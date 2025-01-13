@@ -10,6 +10,17 @@ export default defineConfig({
   plugins: [stats()],
 });
 
+export const dynamicOptions = defineConfig({
+  input: path.join(__dirname, 'src/index.js'),
+  output: {
+    dir: 'dist',
+    format: 'commonjs',
+  },
+  plugins: [stats((options) => ({
+    fileName: `stats.${options.format}.json`,
+  }))],
+});
+
 export const relativeFileNameConfig = defineConfig({
   input: path.join(__dirname, 'src/index.js'),
   output: {
