@@ -31,7 +31,7 @@ type RollupStatsOptionsOrOutputOptions =
   | ((outputOptions: OutputOptions) => RollupStatsOptions);
 
 
-function rollupStats(options: RollupStatsOptionsOrOutputOptions): Plugin {
+function rollupStats(options: RollupStatsOptionsOrOutputOptions = {}): Plugin {
   return {
     name: PLUGIN_NAME,
     async generateBundle(context, bundle) {
