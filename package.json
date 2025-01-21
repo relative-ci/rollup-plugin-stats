@@ -61,7 +61,7 @@
     "@release-it/conventional-changelog": "10.0.0",
     "@rollup/plugin-typescript": "12.1.2",
     "@tsconfig/node18": "18.2.4",
-    "@types/lodash": "4.17.13",
+    "@types/lodash": "4.17.14",
     "@types/node": "22.10.7",
     "dotenv": "16.4.7",
     "eslint": "9.17.0",
