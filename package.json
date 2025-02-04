@@ -62,7 +62,7 @@
     "@rollup/plugin-typescript": "12.1.2",
     "@tsconfig/node18": "18.2.4",
     "@types/lodash": "4.17.15",
-    "@types/node": "22.13.0",
+    "@types/node": "22.13.1",
     "dotenv": "16.4.7",
     "eslint": "9.19.0",
     "globals": "15.14.0",
