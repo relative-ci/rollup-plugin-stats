@@ -64,7 +64,7 @@
     "@types/lodash": "4.17.15",
     "@types/node": "22.13.4",
     "dotenv": "16.4.7",
-    "eslint": "9.19.0",
+    "eslint": "9.20.1",
     "globals": "15.15.0",
     "husky": "8.0.3",
     "memfs": "4.17.0",
