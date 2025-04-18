@@ -102,13 +102,7 @@ function cloneWithGettersUsingStructuredClone<T extends Record<any, any>>(obj: T
   const plainObject: any = {};
 
   for (const key of Reflect.ownKeys(obj)) {
-    const descriptor = Object.getOwnPropertyDescriptor(obj, key);
-
-    if (descriptor?.get) {
-      plainObject[key] = obj[key as keyof typeof obj];
-    } else {
-      plainObject[key] = obj[key as keyof typeof obj];
-    }
+    plainObject[key] = obj[key as keyof typeof obj];
   }
 
   // Use structuredClone to deeply clone the resulting plain object
