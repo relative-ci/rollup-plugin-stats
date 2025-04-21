@@ -45,7 +45,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
     }
 
     if (bundleEntryStats.type === "asset") {
-      let assetStats = cloneWithGettersUsingStructuredClone(bundleEntryStats) as AssetStats;
+      let assetStats = structuredClone({ ...bundleEntryStats }) as AssetStats;
 
       // Skip asset source if options source is false
       if (!source) {
@@ -58,7 +58,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
     }
 
     if (bundleEntryStats.type === "chunk") {
-      let chunkStats = cloneWithGettersUsingStructuredClone(bundleEntryStats) as ChunkStats;
+      let chunkStats = structuredClone({ ...bundleEntryStats }) as ChunkStats;
 
       // Skip chunk source if options source is false
       if (!source) {
@@ -74,7 +74,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
           return;
         }
 
-        let moduleStats = cloneWithGettersUsingStructuredClone(bundleModuleStats) as ModuleStats;
+        let moduleStats = structuredClone({ ...bundleModuleStats }) as ModuleStats;
 
         // Skip module source if options source is false
         if (!source) {
@@ -93,18 +93,4 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
   });
   
   return output;
-}
-
-/**
- * Clone an object with getters using structuredClone
- */
-function cloneWithGettersUsingStructuredClone<T extends Record<any, any>>(obj: T) {
-  const plainObject: any = {};
-
-  for (const key of Reflect.ownKeys(obj)) {
-    plainObject[key] = obj[key as keyof typeof obj];
-  }
-
-  // Use structuredClone to deeply clone the resulting plain object
-  return structuredClone(plainObject) as typeof obj;
 }
