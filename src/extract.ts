@@ -45,7 +45,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
     }
 
     if (bundleEntryStats.type === "asset") {
-      let assetStats = structuredClone({ ...bundleEntryStats }) as AssetStats;
+      let assetStats = bundleEntryStats as AssetStats;
 
       // Skip asset source if options source is false
       if (!source) {
@@ -58,7 +58,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
     }
 
     if (bundleEntryStats.type === "chunk") {
-      let chunkStats = structuredClone({ ...bundleEntryStats }) as ChunkStats;
+      let chunkStats = bundleEntryStats as ChunkStats;
 
       // Skip chunk source if options source is false
       if (!source) {
@@ -74,7 +74,7 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
           return;
         }
 
-        let moduleStats = structuredClone({ ...bundleModuleStats }) as ModuleStats;
+        let moduleStats = bundleModuleStats as ModuleStats;
 
         // Skip module source if options source is false
         if (!source) {
