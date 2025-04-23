@@ -51,7 +51,7 @@ jobs:
           retention-days: 1
           path: dist*/
 
-  test-package:
+  test-package-rollup:
     name: "Test package on rollup v${{ matrix.rollup }} / node ${{ matrix.node }} / ${{ matrix.os }}"
     needs:
       - build
@@ -102,14 +102,58 @@ jobs:
         working-directory: test/package
 
       - name: "Test package"
-        run: npm run test:package
+        run: npm run test:package -- -t rollup
+
+  test-package-rolldown:
+    name: "Test package on rolldown v${{ matrix.rolldown }} / node ${{ matrix.node }} / ${{ matrix.os }}"
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["22"]
+        os: [ubuntu-latest, windows-latest]
+        rolldown: ["1"]
+
+    steps:
+      - name: "Checkout repo"
+        uses: actions/checkout@v4.2.2
+
+      - name: "Setup node & npm"
+        uses: "relative-ci/.github/actions/setup-node-npm@v1.1.0"
+        with:
+          cache: "never"
+          version: ${{ matrix.node }}
+          install: false
+
+      - name: "Install test dependencies"
+        run: npm install vitest
+
+      - name: "Download build files"
+        uses: actions/download-artifact@v4.2.1
+        with:
+          name: build-artifacts
+
+      - name: "Setup local npm registry"
+        run: ./scripts/setup-registry.sh
+
+      - name: "Install test package dependencies"
+        run: |
+          npm install 
+          npx rolldown -v
+        working-directory: test/package
+
+      - name: "Test package"
+        run: npm run test:package -- -t rolldown
 
   tests:
     needs:
       - lint
       - test-unit
       - build
-      - test-package
+      - test-package-rollup
+      - test-package-rolldown
     runs-on: ubuntu-latest
     steps:
       - run: exit 0

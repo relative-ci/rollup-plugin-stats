@@ -6,7 +6,7 @@ import { vol } from 'memfs';
 
 import config, { dynamicOptions, relativeFileNameConfig, absoluteFileNameConfig } from './rollup.config';
 
-describe('package test', () => {
+describe('rollup package test', () => {
   beforeEach(() => {
     vol.reset();
   });
@@ -24,9 +24,9 @@ describe('package test', () => {
 
   test('should output stats JSON file with explicit compilation file name', async () => {
     const bundle = await rollup(dynamicOptions);
-    await bundle.generate(config.output);
+    await bundle.generate(dynamicOptions.output);
 
-    const actual = await fs.readFile(path.join(config.output.dir, 'stats.es.json'), 'utf8');
+    const actual = await fs.readFile(path.join(dynamicOptions.output.dir, 'stats.cjs.json'), 'utf8');
     const stats = JSON.parse(actual);
     expect(stats['index.js']).toMatchObject({
       fileName: 'index.js',
