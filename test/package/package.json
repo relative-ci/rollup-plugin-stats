@@ -10,6 +10,7 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
+    "rolldown": "^1.0.0-beta.8",
     "rollup": "^4.9.1",
     "rollup-plugin-stats": "*"
   }
