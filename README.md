@@ -21,28 +21,50 @@ yarn add --dev rollup-plugin-stats
 
 ## Configure
 
+### Rollup
+
 ```js
 // rollup.config.mjs
+import { defineConfig } from 'rollup';
 import stats from 'rollup-plugin-stats';
 
-export default {
+export default defineConfig({
+  // your rollup config
   plugins: [
     // add it as the last plugin
     stats(),
   ],
-};
+});
 ```
 
 ```js
 // rollup.config.js
+const { defineConfig } = require('rollup');
 const stats = require('rollup-plugin-stats');
 
-module.exports = {
+module.exports = defineConfig({
+  // your rollup config
   plugins: [
     // add it as the last plugin
     stats(),
   ],
-};
+});
+```
+
+### Rolldown
+
+```js
+// rolldown.config.js
+import { defineConfig } from 'rolldown';
+import stats from 'rollup-plugin-stats';
+
+export default defineConfig({
+  // your rolldown config
+  plugins: [
+    // add it as the last plugin
+    stats(),
+],
+});
 ```
 
 ### Options
