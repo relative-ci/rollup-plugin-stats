@@ -34,6 +34,9 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    needs:
+      - lint
+      - test-unit
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4.2.2
@@ -52,7 +55,7 @@ jobs:
           path: dist*/
 
   test-package-rollup:
-    name: "Test package on rollup v${{ matrix.rollup }} / node ${{ matrix.node }} / ${{ matrix.os }}"
+    name: "rollup v${{ matrix.rollup }} / node ${{ matrix.node }} / ${{ matrix.os }}"
     needs:
       - build
     runs-on: ubuntu-latest
@@ -105,7 +108,7 @@ jobs:
         run: npm run test:package -- -t rollup
 
   test-package-rolldown:
-    name: "Test package on rolldown v${{ matrix.rolldown }} / node ${{ matrix.node }} / ${{ matrix.os }}"
+    name: "rolldown v${{ matrix.rolldown }} / node ${{ matrix.node }} / ${{ matrix.os }}"
     needs:
       - build
     runs-on: ubuntu-latest
@@ -149,9 +152,6 @@ jobs:
 
   tests:
     needs:
-      - lint
-      - test-unit
-      - build
       - test-package-rollup
       - test-package-rolldown
     runs-on: ubuntu-latest
