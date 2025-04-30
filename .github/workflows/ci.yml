@@ -134,7 +134,7 @@ jobs:
         run: npm install vitest
 
       - name: "Download build files"
-        uses: actions/download-artifact@v4.2.1
+        uses: actions/download-artifact@v4.3.0
         with:
           name: build-artifacts
 
