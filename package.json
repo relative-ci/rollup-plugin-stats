@@ -68,7 +68,7 @@
     "eslint": "9.25.1",
     "globals": "16.1.0",
     "husky": "8.0.3",
-    "memfs": "4.17.1",
+    "memfs": "4.17.2",
     "prettier": "3.5.3",
     "release-it": "19.0.2",
     "rollup": "4.40.2",
