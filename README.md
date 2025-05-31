@@ -1,6 +1,7 @@
 # rollup-plugin-stats
 
 [![](https://img.shields.io/npm/v/rollup-plugin-stats.svg)](https://www.npmjs.com/package/rollup-plugin-stats)
+[![npm](https://img.shields.io/npm/dm/rollup-plugin-stats)](https://www.npmjs.com/package/rollup-plugin-stats)
 ![](https://img.shields.io/node/v/rollup-plugin-stats.svg)
 [![Socket Badge](https://socket.dev/api/badge/npm/package/rollup-plugin-stats)](https://socket.dev/npm/package/rollup-plugin-stats)
 [![ci](https://github.com/relative-ci/rollup-plugin-stats/actions/workflows/ci.yml/badge.svg)](https://github.com/relative-ci/rollup-plugin-stats/actions/workflows/ci.yml)
