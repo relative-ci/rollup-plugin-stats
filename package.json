@@ -17,9 +17,11 @@
     "url": "https://relative-ci.com"
   },
   "keywords": [
+    "vite",
     "rollup",
     "plugin",
-    "stats"
+    "stats",
+    "bundle-stats"
   ],
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -75,6 +77,15 @@
     "vitest": "3.1.2"
   },
   "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0",
     "rollup": "^3.0.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    },
+    "rollup": {
+      "optional": true
+    }
   }
 }
