@@ -21,18 +21,34 @@ yarn add --dev rollup-plugin-stats
 
 ## Configure
 
+### Vite
+
+```js
+// vite.config.mjs
+import { defineConfig } from 'vite';
+import pluginStats from 'rollup-plugin-stats';
+
+export default defineConfig({
+  // your vite config
+  plugins: [
+    // add it as the last plugin
+    pluginStats(),
+  ],
+});
+```
+
 ### Rollup
 
 ```js
 // rollup.config.mjs
 import { defineConfig } from 'rollup';
-import stats from 'rollup-plugin-stats';
+import pluginStats from 'rollup-plugin-stats';
 
 export default defineConfig({
   // your rollup config
   plugins: [
     // add it as the last plugin
-    stats(),
+    pluginStats(),
   ],
 });
 ```
@@ -40,13 +56,13 @@ export default defineConfig({
 ```js
 // rollup.config.js
 const { defineConfig } = require('rollup');
-const stats = require('rollup-plugin-stats');
+const pluginStats = require('rollup-plugin-stats');
 
 module.exports = defineConfig({
   // your rollup config
   plugins: [
     // add it as the last plugin
-    stats(),
+    pluginStats(),
   ],
 });
 ```
@@ -56,13 +72,13 @@ module.exports = defineConfig({
 ```js
 // rolldown.config.js
 import { defineConfig } from 'rolldown';
-import stats from 'rollup-plugin-stats';
+import pluginStats from 'rollup-plugin-stats';
 
 export default defineConfig({
   // your rolldown config
   plugins: [
     // add it as the last plugin
-    stats(),
+    pluginStats(),
 ],
 });
 ```
