@@ -17,9 +17,11 @@
     "url": "https://relative-ci.com"
   },
   "keywords": [
+    "vite",
     "rollup",
     "plugin",
-    "stats"
+    "stats",
+    "bundle-stats"
   ],
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
