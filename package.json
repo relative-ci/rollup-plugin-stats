@@ -31,14 +31,14 @@
   ],
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
     "./extract": {
+      "types": "./dist/extract.d.ts",
       "import": "./dist/extract.mjs",
-      "require": "./dist/extract.cjs",
-      "types": "./dist/extract.d.ts"
+      "require": "./dist/extract.cjs"
     }
   },
   "engines": {
