@@ -49,7 +49,9 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test:unit": "vitest test/unit",
-    "test:package": "vitest test/package",
+    "test:package": "npm run test:package:rolldown && npm run test:package:rollup",
+    "test:package:rolldown": "vitest test/package/rolldown",
+    "test:package:rollup": "vitest test/package/rollup",
     "bump": "./scripts/bump.sh",
     "release": "./scripts/release.sh"
   },

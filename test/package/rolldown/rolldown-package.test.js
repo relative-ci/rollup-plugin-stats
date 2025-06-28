@@ -4,7 +4,7 @@ import { describe, test, expect, beforeEach } from 'vitest';
 import { rolldown } from 'rolldown';
 import { vol } from 'memfs';
 
-import config, { dynamicOptions, relativeFileNameConfig, absoluteFileNameConfig } from './rollup.config';
+import config, { dynamicOptions, relativeFileNameConfig, absoluteFileNameConfig } from './rolldown.config';
 
 describe('rolldown package test', () => {
   beforeEach(() => {
