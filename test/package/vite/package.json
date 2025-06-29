@@ -3,15 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "build": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [],
   "license": "ISC",
+  "type": "module",
   "devDependencies": {
-    "rolldown": "^1.0.0-beta.8",
-    "rollup": "^4.9.1",
+    "vite": "^7.0.0",
     "rollup-plugin-stats": "*"
   }
 }
