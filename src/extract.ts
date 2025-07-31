@@ -45,9 +45,9 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
     }
 
     if (bundleEntryStats.type === "asset") {
-      let assetStats = bundleEntryStats as AssetStats;
+      let assetStats = shallowCloneStatsObject<AssetStats>(bundleEntryStats);
 
-      // Skip asset source if options source is false
+      // Skip asset source if options.source is false
       if (!source) {
         assetStats = omit(assetStats, ['source']); 
       }
@@ -58,9 +58,9 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
     }
 
     if (bundleEntryStats.type === "chunk") {
-      let chunkStats = bundleEntryStats as ChunkStats;
+      let chunkStats = shallowCloneStatsObject<ChunkStats>(bundleEntryStats);
 
-      // Skip chunk source if options source is false
+      // Skip chunk source if options.source is false
       if (!source) {
         chunkStats = omit(chunkStats, ['code']);
       }
@@ -74,9 +74,9 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
           return;
         }
 
-        let moduleStats = bundleModuleStats as ModuleStats;
+        let moduleStats = shallowCloneStatsObject<ModuleStats>(bundleModuleStats);
 
-        // Skip module source if options source is false
+        // Skip module source if options.source is false
         if (!source) {
           moduleStats = omit(moduleStats, ['code']);
         }
@@ -93,4 +93,15 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
   });
   
   return output;
+}
+
+/**
+ * Shallow clone stats object before any processing to
+ * 1. resolve getters
+ * 2. prevent changes to the stats object
+ *
+ * @NOTE structuredClone is not supported by rolldown-vite: https://github.com/vitejs/rolldown-vite/issues/128
+ */
+function shallowCloneStatsObject<TResult>(data: object) {
+  return {...data} as TResult;
 }
