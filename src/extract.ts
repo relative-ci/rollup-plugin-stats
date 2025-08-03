@@ -45,25 +45,31 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
     }
 
     if (bundleEntryStats.type === "asset") {
-      let assetStats = shallowCloneStatsObject<AssetStats>(bundleEntryStats);
+      const assteStatsOmitKeys = [];
 
       // Skip asset source if options.source is false
       if (!source) {
-        assetStats = omit(assetStats, ['source']); 
+        assteStatsOmitKeys.push('source'); 
       }
 
-      output[bundleEntryFilepath] = assetStats;
+      output[bundleEntryFilepath] = shallowCloneStatsObject<AssetStats>(
+        bundleEntryStats,
+        assteStatsOmitKeys,
+      );
 
       return;
     }
 
     if (bundleEntryStats.type === "chunk") {
-      let chunkStats = shallowCloneStatsObject<ChunkStats>(bundleEntryStats);
+      const chunkStatsOmitKeys = [];
 
       // Skip chunk source if options.source is false
       if (!source) {
-        chunkStats = omit(chunkStats, ['code']);
+        chunkStatsOmitKeys.push('code');
       }
+
+      const chunkStats = shallowCloneStatsObject<ChunkStats>(bundleEntryStats, chunkStatsOmitKeys);
+
 
       // Extract chunk modules stats
       const chunkModulesStats: ChunkStats['modules'] = {};
@@ -74,14 +80,17 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
           return;
         }
 
-        let moduleStats = shallowCloneStatsObject<ModuleStats>(bundleModuleStats);
+        const moduleStatsOmitKeys = [];
 
         // Skip module source if options.source is false
         if (!source) {
-          moduleStats = omit(moduleStats, ['code']);
+          moduleStatsOmitKeys.push('code');
         }
 
-        chunkModulesStats[bundleModuleFilepath] = moduleStats;
+        chunkModulesStats[bundleModuleFilepath] = shallowCloneStatsObject<ModuleStats>(
+          bundleModuleStats,
+          moduleStatsOmitKeys,
+        );
       });
 
       chunkStats.modules = chunkModulesStats;
@@ -102,6 +111,6 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
  *
  * @NOTE structuredClone is not supported by rolldown-vite: https://github.com/vitejs/rolldown-vite/issues/128
  */
-function shallowCloneStatsObject<TResult>(data: object) {
-  return {...data} as TResult;
+function shallowCloneStatsObject<TResult>(data: object, omitKeys: Array<string>) {
+  return omit(data, omitKeys) as TResult;
 }
