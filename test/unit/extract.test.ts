@@ -13,6 +13,10 @@ describe('extract', () => {
     expect(extract(deepFreeze(rollupStats.stats), { source: true })).toMatchSnapshot();
   });
 
+  test('should extract rollup stats with maps', () => {
+    expect(extract(deepFreeze(rollupStats.stats), { map: true })).toMatchSnapshot();
+  });
+
   test('should extract rollup stats with excluded assets', () => {
     expect(extract(deepFreeze(rollupStats.stats), { excludeAssets : /vendors/ })).toMatchSnapshot();
   });

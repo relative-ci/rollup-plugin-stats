@@ -16,6 +16,7 @@ export type ModuleStats = Omit<RenderedModule, keyof ModuleStatsOptionalProperti
 
 export type ChunkStatsOptionalProperties = {
   code?: OutputChunk['code'];
+  map?: OutputChunk['map']; 
 };
 
 export type ChunkStats = Omit<OutputChunk, keyof ChunkStatsOptionalProperties | 'modules'> & {
@@ -30,6 +31,11 @@ export type StatsOptions = {
    * @default false 
    */
   source?: boolean;
+  /**
+   * Output chunk map
+   * @default false 
+   */
+  map?: boolean;
   /**
    * Exclude matching assets
    */
@@ -50,7 +56,7 @@ export type StatsOptions = {
  * @NOTE structuredClone is not supported by rolldown-vite: https://github.com/vitejs/rolldown-vite/issues/128
  */
 export default function extractRollupStats(bundle: OutputBundle, options: StatsOptions = {}): Stats {
-  const { source = false, excludeAssets, excludeModules } = options;
+  const { source = false, map = false, excludeAssets, excludeModules } = options;
 
   const output: Stats = {};
 
@@ -82,6 +88,11 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
       // Skip chunk source if options.source is false
       if (!source) {
         chunkStatsOmitKeys.push('code');
+      }
+
+      // Skip chunk map if options.map is false
+      if (!map) {
+        chunkStatsOmitKeys.push('map');
       }
 
       const chunkStats = omit(bundleEntryStats, chunkStatsOmitKeys) as ChunkStats;
