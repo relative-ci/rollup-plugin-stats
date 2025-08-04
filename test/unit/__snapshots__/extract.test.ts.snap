@@ -66,6 +66,37 @@ exports[`extract > should extract rollup stats with excluded modules 1`] = `
 }
 `;
 
+exports[`extract > should extract rollup stats with maps 1`] = `
+{
+  "assets/logo.abcd1234.svg": {
+    "fileName": "assets/logo.abcd1234.svg",
+    "type": "asset",
+  },
+  "assets/main.abcd1234.js": {
+    "fileName": "assets/main.abcd1234.js",
+    "map": {
+      "version": "3",
+    },
+    "modules": {
+      "/home/user/project/src/main.js": {},
+      "/home/user/project/src/utils.js": {},
+    },
+    "type": "chunk",
+  },
+  "assets/vendors.abcd1234.js": {
+    "fileName": "assets/vendors.abcd1234.js",
+    "map": {
+      "version": "3",
+    },
+    "modules": {
+      "/home/user/project/node_modules/package-a/index.js": {},
+      "/home/user/project/node_modules/package-b/index.js": {},
+    },
+    "type": "chunk",
+  },
+}
+`;
+
 exports[`extract > should extract rollup stats with sources 1`] = `
 {
   "assets/logo.abcd1234.svg": {

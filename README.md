@@ -90,6 +90,7 @@ export default defineConfig({
 - `write` - format and write the stats to disk(default: `fs.write(filename, JSON.stringify(stats, null, 2))`)
 - `stats` 
     - `source` - output asset/chunk/module source (default `false`)
+    - `map` - output chunk map property (default: `false`)
     - `excludeAssets` - exclude matching assets: `string | RegExp | ((filepath: string) => boolean) | Array<string | RegExp | ((filepath: string) => boolean)>`
     - `excludeModules` - exclude matching modules: `string | RegExp | ((filepath: string) => boolean) | Array<string | RegExp | ((filepath: string) => boolean)>`
 
