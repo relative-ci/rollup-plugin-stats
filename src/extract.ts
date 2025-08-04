@@ -2,18 +2,25 @@ import type { OutputAsset, OutputBundle, OutputChunk, RenderedModule } from 'rol
 import { omit } from './utils/omit';
 import { type ExcludeFilepathPatterns, checkExcludeFilepath } from './utils/check-exclude-filepath';
 
-export type AssetStats = Omit<OutputAsset, 'source'> & {
+export type AssetStatsOptionalProperties = {
   source?: OutputAsset['source'];
 };
 
-export type ModuleStats = Omit<RenderedModule, 'code'> & {
-  code?: RenderedModule['code'] | null;
-}
+export type AssetStats = Omit<OutputAsset, keyof AssetStatsOptionalProperties> & AssetStatsOptionalProperties;
 
-export type ChunkStats = Omit<OutputChunk, 'code' | 'modules'> & {
-  code?: OutputChunk['code'];
-  modules: Record<string, ModuleStats>;
+export type ModuleStatsOptionalProperties = {
+  code?: RenderedModule['code'] | null;
 };
+
+export type ModuleStats = Omit<RenderedModule, keyof ModuleStatsOptionalProperties> & ModuleStatsOptionalProperties;
+
+export type ChunkStatsOptionalProperties = {
+  code?: OutputChunk['code'];
+};
+
+export type ChunkStats = Omit<OutputChunk, keyof ChunkStatsOptionalProperties | 'modules'> & {
+  modules: Record<string, ModuleStats>;
+} & ChunkStatsOptionalProperties;
 
 export type Stats = Record<string, AssetStats | ChunkStats>;
 
@@ -33,6 +40,15 @@ export type StatsOptions = {
   excludeModules?: ExcludeFilepathPatterns;
 }
 
+/**
+ * Extract bundler stats
+ *
+ * Shallow clone stats object before any processing using `omit` to
+ * 1. resolve getters
+ * 2. prevent changes to the stats object
+ *
+ * @NOTE structuredClone is not supported by rolldown-vite: https://github.com/vitejs/rolldown-vite/issues/128
+ */
 export default function extractRollupStats(bundle: OutputBundle, options: StatsOptions = {}): Stats {
   const { source = false, excludeAssets, excludeModules } = options;
 
@@ -45,30 +61,30 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
     }
 
     if (bundleEntryStats.type === "asset") {
-      const assteStatsOmitKeys = [];
+      const assetStatsOmitKeys: Array<keyof AssetStatsOptionalProperties> = [];
 
       // Skip asset source if options.source is false
       if (!source) {
-        assteStatsOmitKeys.push('source'); 
+        assetStatsOmitKeys.push('source'); 
       }
 
-      output[bundleEntryFilepath] = shallowCloneStatsObject<AssetStats>(
+      output[bundleEntryFilepath] = omit(
         bundleEntryStats,
-        assteStatsOmitKeys,
-      );
+        assetStatsOmitKeys,
+      ) as AssetStats;
 
       return;
     }
 
     if (bundleEntryStats.type === "chunk") {
-      const chunkStatsOmitKeys = [];
+      const chunkStatsOmitKeys: Array<keyof ChunkStatsOptionalProperties> = [];
 
       // Skip chunk source if options.source is false
       if (!source) {
         chunkStatsOmitKeys.push('code');
       }
 
-      const chunkStats = shallowCloneStatsObject<ChunkStats>(bundleEntryStats, chunkStatsOmitKeys);
+      const chunkStats = omit(bundleEntryStats, chunkStatsOmitKeys) as ChunkStats;
 
 
       // Extract chunk modules stats
@@ -80,17 +96,17 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
           return;
         }
 
-        const moduleStatsOmitKeys = [];
+        const moduleStatsOmitKeys: Array<keyof ModuleStatsOptionalProperties> = [];
 
         // Skip module source if options.source is false
         if (!source) {
           moduleStatsOmitKeys.push('code');
         }
 
-        chunkModulesStats[bundleModuleFilepath] = shallowCloneStatsObject<ModuleStats>(
+        chunkModulesStats[bundleModuleFilepath] = omit(
           bundleModuleStats,
           moduleStatsOmitKeys,
-        );
+        ) as ModuleStats;
       });
 
       chunkStats.modules = chunkModulesStats;
@@ -102,15 +118,4 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
   });
   
   return output;
-}
-
-/**
- * Shallow clone stats object before any processing to
- * 1. resolve getters
- * 2. prevent changes to the stats object
- *
- * @NOTE structuredClone is not supported by rolldown-vite: https://github.com/vitejs/rolldown-vite/issues/128
- */
-function shallowCloneStatsObject<TResult>(data: object, omitKeys: Array<string>) {
-  return omit(data, omitKeys) as TResult;
 }

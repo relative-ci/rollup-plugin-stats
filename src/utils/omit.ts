@@ -1,4 +1,4 @@
-export function omit<D extends object, K extends keyof D>(
+export function omit<D extends object, K extends keyof D = keyof D>(
   data: D,
   keys: K[],
 ): Omit<D, K> {
