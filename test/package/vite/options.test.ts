@@ -4,9 +4,9 @@ import { describe, test, expect, beforeEach } from 'vitest';
 import { build as vite } from 'vite';
 import { vol } from 'memfs';
 
-import config, { relativeFileNameConfig, absoluteFileNameConfig } from './vite.config';
+import config, { relativeFileNameConfig, absoluteFileNameConfig } from './case-options';
 
-describe('vite package test', () => {
+describe('package - vite options', () => {
   beforeEach(() => {
     vol.reset();
   });

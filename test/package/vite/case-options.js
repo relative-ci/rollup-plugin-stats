@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import stats from 'rollup-plugin-stats';
 
 const baseConfig = {
-  root: __dirname,
   output: {
     dir: 'dist',
   },
