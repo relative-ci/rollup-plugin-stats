@@ -52,7 +52,7 @@ jobs:
         with:
           name: build-artifacts
           retention-days: 1
-          path: dist*/
+          path: lib*/
 
   test-package-rollup:
     name: "rollup v${{ matrix.rollup }} / node ${{ matrix.node }} / ${{ matrix.os }}"

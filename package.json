@@ -24,29 +24,31 @@
     "stats",
     "bundle-stats"
   ],
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "typings": "dist/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "typings": "./lib/types/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
     },
     "./extract": {
-      "types": "./dist/extract.d.ts",
-      "import": "./dist/extract.mjs",
-      "require": "./dist/extract.cjs"
+      "types": "./lib/types/extract.d.ts",
+      "import": "./lib/esm/extract.js",
+      "require": "./lib/cjs/extract.js"
     }
   },
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "rollup -c rollup.config.mjs",
+    "build": "npm run clean && rollup -c && npm run build-type",
+    "build-type": "echo '{\"type\":\"commonjs\"}' > lib/cjs/package.json && echo '{\"type\":\"module\"}' > lib/esm/package.json",
+    "clean": "rimraf ./lib",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test:unit": "vitest test/unit",
@@ -65,7 +67,9 @@
   "devDependencies": {
     "@eslint/js": "9.36.0",
     "@release-it/conventional-changelog": "10.0.1",
-    "@rollup/plugin-typescript": "12.1.4",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.4",
     "@tsconfig/node18": "18.2.4",
     "@types/node": "24.5.2",
     "deep-freeze-strict": "1.1.1",
@@ -75,6 +79,7 @@
     "memfs": "4.46.1",
     "prettier": "3.6.2",
     "release-it": "19.0.5",
+    "rimraf": "6.0.1",
     "rollup": "4.52.2",
     "typescript": "5.9.2",
     "typescript-eslint": "8.44.1",
