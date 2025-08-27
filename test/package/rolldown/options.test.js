@@ -4,9 +4,9 @@ import { describe, test, expect, beforeEach } from 'vitest';
 import { rolldown } from 'rolldown';
 import { vol } from 'memfs';
 
-import config, { dynamicOptions, relativeFileNameConfig, absoluteFileNameConfig } from './rolldown.config';
+import config, { dynamicOptions, relativeFileNameConfig, absoluteFileNameConfig } from './case-options';
 
-describe('rolldown package test', () => {
+describe('package - rolldown options', () => {
   beforeEach(() => {
     vol.reset();
   });
