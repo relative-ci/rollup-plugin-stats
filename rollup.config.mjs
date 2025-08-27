@@ -1,36 +1,67 @@
 import { defineConfig } from 'rollup';
-import typescript from '@rollup/plugin-typescript';
+
+import commonjsPlugin from '@rollup/plugin-commonjs';
+import nodeResolvePlugin from '@rollup/plugin-node-resolve';
+import typescriptPlugin from '@rollup/plugin-typescript';
 
 const INPUT = {
   index: './src/index.ts',
   extract: './src/extract.ts',
 };
 
+const CONTEXT = path.join(import.meta.dirname, 'src');
 const OUTPUT_DIR = 'dist';
-const EXTERNAL = ['node:fs/promises', 'node:path', 'node:process'];
 
 export default defineConfig([
   {
+    context: CONTEXT,
     input: INPUT,
+    output: {
+      dir: OUTPUT_DIR,
+      format: 'cjs',
+      entryFileNames: 'cjs/[name].js',
+      sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: CONTEXT,
+      interop: 'auto',
+    },
+    external: /node_modules/,
+    plugins: [
+      nodeResolvePlugin({
+        extensions: ['.js', '.cjs', '.ts', '.json'],
+      }),
+      commonjsPlugin({
+        defaultIsModuleExports: 'auto',
+      }),
+      typescriptPlugin({
+        tsconfig: './tsconfig.cjs.json',
+      }),
+    ],
+  },
+  {
+    context: CONTEXT,
+    input: './src/index.ts',
     output: {
       dir: OUTPUT_DIR,
       format: 'esm',
-      entryFileNames: '[name].mjs',
+      entryFileNames: 'esm/[name].js',
       sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: CONTEXT,
+      interop: 'auto',
     },
-    external: EXTERNAL,
-    plugins: [typescript()],
-  },
-  {
-    input: INPUT,
-    output: {
-      dir: OUTPUT_DIR,
-      format: 'commonjs',
-      exports: 'default',
-      entryFileNames: '[name].cjs',
-      sourcemap: true,
-    },
-    external: EXTERNAL,
-    plugins: [typescript()],
+    external: /node_modules/,
+    plugins: [
+      nodeResolvePlugin({
+        extensions: ['.js', '.mjs', '.cjs', '.ts', '.json'],
+      }),
+      commonjsPlugin({
+        // defaultIsModuleExports: 'auto',
+        // transformMixedEsModules: true,
+      }),
+      typescriptPlugin({
+        tsconfig: './tsconfig.esm.json',
+      }),
+    ],
   },
 ]);
