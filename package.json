@@ -52,9 +52,9 @@
     "format": "prettier --write .",
     "test:unit": "vitest test/unit",
     "test:package": "npm run test:package:rolldown && npm run test:package:rollup && npm run test:package:vite",
-    "test:package:rolldown": "vitest test/package/rolldown",
-    "test:package:rollup": "vitest test/package/rollup",
-    "test:package:vite": "vitest test/package/vite",
+    "test:package:rolldown": "cd test/package/rolldown && npm run test",
+    "test:package:rollup": "cd test/package/rollup && npm run test",
+    "test:package:vite": "cd test/package/vite && npm run test",
     "bump": "./scripts/bump.sh",
     "release": "./scripts/release.sh"
   },
