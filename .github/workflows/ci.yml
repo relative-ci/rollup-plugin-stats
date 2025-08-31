@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
 
       - name: "Setup node & npm"
         uses: "relative-ci/.github/actions/setup-node-npm@v1.1.1"
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
 
       - name: "Setup node & npm"
         uses: "relative-ci/.github/actions/setup-node-npm@v1.1.1"
@@ -39,7 +39,7 @@ jobs:
       - test-unit
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
 
       - name: "Setup node & npm"
         uses: "relative-ci/.github/actions/setup-node-npm@v1.1.1"
@@ -77,7 +77,7 @@ jobs:
 
     steps:
       - name: "Checkout repo"
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
 
       - name: "Setup node & npm"
         uses: "relative-ci/.github/actions/setup-node-npm@v1.1.1"
@@ -90,7 +90,7 @@ jobs:
         run: npm install vitest
 
       - name: "Download build files"
-        uses: actions/download-artifact@v4.3.0
+        uses: actions/download-artifact@v5.0.0
         with:
           name: build-artifacts
 
@@ -121,7 +121,7 @@ jobs:
 
     steps:
       - name: "Checkout repo"
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
 
       - name: "Setup node & npm"
         uses: "relative-ci/.github/actions/setup-node-npm@v1.1.1"
@@ -134,7 +134,7 @@ jobs:
         run: npm install vitest
 
       - name: "Download build files"
-        uses: actions/download-artifact@v4.3.0
+        uses: actions/download-artifact@v5.0.0
         with:
           name: build-artifacts
 
@@ -171,7 +171,7 @@ jobs:
 
     steps:
       - name: "Checkout repo"
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
 
       - name: "Setup node & npm"
         uses: "relative-ci/.github/actions/setup-node-npm@v1.1.1"
@@ -184,7 +184,7 @@ jobs:
         run: npm install vitest
 
       - name: "Download build files"
-        uses: actions/download-artifact@v4.3.0
+        uses: actions/download-artifact@v5.0.0
         with:
           name: build-artifacts
 
@@ -219,13 +219,13 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v5.0.0
 
       - name: "Setup node & npm"
         uses: "relative-ci/.github/actions/setup-node-npm@v1.1.1"
 
       - name: "Download build"
-        uses: actions/download-artifact@v4.3.0
+        uses: actions/download-artifact@v5.0.0
         with:
           name: build-artifacts
 
