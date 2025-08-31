@@ -1,10 +1,10 @@
 {
-  "name": "rollup-plugin-stats-package-test-vite",
+  "name": "rollup-plugin-stats-test-package-rollup",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-commonjs": "vite build -c case-config.js",
+    "build-cjs": "vite build -c case-config.js",
     "build-esm": "vite build -c case-config.mjs",
     "build-ts": "vite build -c case-config.ts",
     "test": "vitest"

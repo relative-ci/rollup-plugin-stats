@@ -4,6 +4,7 @@ const stats = require('rollup-plugin-stats');
 
 module.exports = defineConfig({
   build: {
+    outDir: 'dist-cjs',
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name][extname]',

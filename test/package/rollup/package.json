@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-commonjs": "rollup -c case-config.js",
+    "build-cjs": "rollup -c case-config.js",
     "build-esm": "rollup -c case-config.mjs",
     "build-ts": "rollup --config case-config.ts --configPlugin typescript",
     "test": "vitest"
