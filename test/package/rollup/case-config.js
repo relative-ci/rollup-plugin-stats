@@ -5,7 +5,7 @@ const stats = require('rollup-plugin-stats');
 module.exports = defineConfig({
   input: 'src/index.js',
   output: {
-    dir: 'dist',
+    dir: 'dist-cjs',
   },
   plugins: [stats({})],
 });

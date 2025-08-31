@@ -5,7 +5,7 @@ import { describe, expect, test } from 'vitest';
 const exec = promisify(execCallback);
 
 const testCases = [
-  { type: 'commonjs', run: 'npm run build-commonjs' },
+  { type: 'cjs', run: 'npm run build-cjs' },
   { type: 'esm', run: 'npm run build-esm' },
   { type: 'ts', run: 'npm run build-ts' },
 ];
