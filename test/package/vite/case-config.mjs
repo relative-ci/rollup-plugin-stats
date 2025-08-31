@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import stats from 'rollup-plugin-stats';
+import statsPlugin from 'rollup-plugin-stats';
 
 export default defineConfig({
   build: {
@@ -12,5 +12,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [stats()],
+  plugins: [statsPlugin()],
 });
