@@ -3,6 +3,7 @@ import stats from 'rollup-plugin-stats';
 
 export default defineConfig({
   build: {
+    outDir: 'dist-ts',
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name][extname]',
