@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const { defineConfig } = require('vite');
-const stats = require('rollup-plugin-stats');
+const statsPlugin = require('rollup-plugin-stats');
 
 module.exports = defineConfig({
   build: {
@@ -13,5 +13,5 @@ module.exports = defineConfig({
       },
     },
   },
-  plugins: [stats()],
+  plugins: [statsPlugin()],
 });
