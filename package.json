@@ -47,8 +47,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "npm run clean && rollup -c && npm run build-type",
-    "build-type": "echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json && echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "build": "npm run clean && tsc && rollup -c && npm run build-dist-packages",
+    "build-dist-packages": "echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json && echo '{\"type\":\"module\"}' > dist/esm/package.json",
     "clean": "rimraf ./dist",
     "lint": "eslint .",
     "format": "prettier --write .",
