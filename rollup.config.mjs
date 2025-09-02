@@ -9,8 +9,8 @@ const INPUT = {
   extract: './src/extract.ts',
 };
 
-const CONTEXT = path.join(import.meta.dirname, 'src');
-const OUTPUT_DIR = 'dist';
+const CONTEXT = './src';
+const OUTPUT_DIR = './dist';
 
 export default defineConfig([
   {
@@ -40,7 +40,7 @@ export default defineConfig([
   },
   {
     context: CONTEXT,
-    input: './src/index.ts',
+    input: INPUT,
     output: {
       dir: OUTPUT_DIR,
       format: 'esm',
@@ -55,10 +55,7 @@ export default defineConfig([
       nodeResolvePlugin({
         extensions: ['.js', '.mjs', '.cjs', '.ts', '.json'],
       }),
-      commonjsPlugin({
-        // defaultIsModuleExports: 'auto',
-        // transformMixedEsModules: true,
-      }),
+      commonjsPlugin(),
       typescriptPlugin({
         tsconfig: './tsconfig.esm.json',
       }),
