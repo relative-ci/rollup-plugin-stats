@@ -1,31 +1,25 @@
 {
   "compilerOptions": {
     /* dirs */
-    "rootDir": "./src",
-    "declarationDir": "./lib/types",
+    "rootDir": ".",
     "types": ["node"],
     /* module config */
-    "target": "es2020",
+    "target": "esnext",
     "lib": ["es2020", "es2022.error"],
+    "module": "nodenext",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",
     /* behaviour options */
-    "strict": true,
     "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "noFallthroughCasesInSwitch": true,
-    "declaration": true,
-    "sourceMap": true,
-    "noImplicitReturns": true,
-    "noImplicitOverride": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noEmit": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true
+    "strict": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "lib"]
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "exclude": ["node_modules", "lib", "dist", "test"]
 }
