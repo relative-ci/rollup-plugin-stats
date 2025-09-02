@@ -41,7 +41,7 @@ export default defineConfig([
   },
   {
     context: CONTEXT,
-    input: './src/index.ts',
+    input: INPUT,
     output: {
       dir: OUTPUT_DIR,
       format: 'esm',
@@ -56,10 +56,7 @@ export default defineConfig([
       nodeResolvePlugin({
         extensions: ['.js', '.mjs', '.cjs', '.json'],
       }),
-      commonjsPlugin({
-        // defaultIsModuleExports: 'auto',
-        // transformMixedEsModules: true,
-      }),
+      commonjsPlugin(),
       typescriptPlugin({
         tsconfig: './tsconfig.esm.json',
       }),
