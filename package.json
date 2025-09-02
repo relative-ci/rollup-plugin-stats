@@ -74,6 +74,7 @@
     "@rollup/plugin-typescript": "12.3.0",
     "@tsconfig/node18": "18.2.6",
     "@types/node": "25.2.1",
+    "@types/deep-freeze-strict": "1.1.2",
     "deep-freeze-strict": "1.1.1",
     "eslint": "9.39.2",
     "globals": "17.3.0",
