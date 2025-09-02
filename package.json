@@ -46,8 +46,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "npm run clean && tsc && rollup -c && npm run build-esm-packages",
+    "build": "npm run clean && npm run type-check && rollup -c && npm run build-esm-packages",
     "build-esm-packages": "echo '{\"type\":\"module\"}' > lib/esm/package.json",
+    "type-check": "tsc",
     "clean": "rimraf ./lib",
     "lint": "eslint .",
     "format": "prettier --write .",
