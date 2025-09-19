@@ -75,7 +75,7 @@
     "husky": "8.0.3",
     "memfs": "4.39.0",
     "prettier": "3.6.2",
-    "release-it": "19.0.4",
+    "release-it": "19.0.5",
     "rollup": "4.50.2",
     "typescript": "5.9.2",
     "typescript-eslint": "8.43.0",
