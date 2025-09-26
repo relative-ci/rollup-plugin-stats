@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 module.exports = {
   git: {
     commit: true,
