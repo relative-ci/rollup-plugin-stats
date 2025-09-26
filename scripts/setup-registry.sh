@@ -7,4 +7,5 @@ sleep 10
 
 npm config set registry=http://localhost:4873
 
-npm publish
+## Always release as beta for testing
+npm publish --tag beta
