@@ -96,23 +96,23 @@ export default defineConfig({
 
 ## Related projects
 
-### [rollup-plugin-webpack-stats](https://github.com/relative-ci/rollup-plugin-webpack-stats)
-
-Generate rollup stats JSON file with a [bundle-stats](https://github.com/relative-ci/bundle-stats/tree/master/packages/cli) webpack [supported structure](https://github.com/relative-ci/bundle-stats/blob/master/packages/plugin-webpack-filter/src/index.ts).
-
 ### [bundle-stats](https://github.com/relative-ci/bundle-stats)
 
-Analyze webpack stats(bundle size, assets, modules, packages) and compare the results between different builds. Support for webpack, rspack, vite, rollup.
+Analyze bundle stats(bundle size, assets, modules, packages) and compare the results between different builds. Support for webpack, rspack, vite, rolldown and rollup.
+
+### [rollup-plugin-webpack-stats](https://github.com/relative-ci/rollup-plugin-webpack-stats)
+
+Generate vite/rollup/rolldown stats JSON file with a [bundle-stats](https://github.com/relative-ci/bundle-stats/tree/master/packages/cli) webpack [supported structure](https://github.com/relative-ci/bundle-stats/blob/master/packages/plugin-webpack-filter/src/index.ts).
 
 ### :cyclone: [relative-ci.com](https://relative-ci.com?utm_medium=rollup-plugin-stats)
 
-#### Optimize your web app's performance with automated bundle stats analysis and monitoring.
+#### Automated bundle analysis, reviews and monitoring - Quickly identify and fix bundle regressions before shipping to production.
 
 - :crystal_ball: In-depth bundle stats analysis for every build
 - :chart_with_upwards_trend: Monitor bundle stats changes and identify opportunities for optimizations
-- :bell: [Rule based automated review flow](https://relative-ci.com/documentation/setup/configure/integrations/github-commit-status-review?utm_medium=rollup-plugin-stats), or get notified via [GitHub Pull Request comments](https://relative-ci.com/documentation/setup/configure/integrations/github-pull-request-comment?utm_medium=rollup-plugin-stats), [GitHub check reports](https://relative-ci.com/documentation/setup/configure/integrations/github-check-report?utm_medium=rollup-plugin-stats) and [Slack messages](https://relative-ci.com/documentation/setup/configure/integrations/slack-notification?utm_medium=rollup-plugin-stats)
-- :wrench: Support for **webpack** and beta support for **Vite**/**Rollup**
+- :bell: Quick feedback with [rule based automated review flow](https://relative-ci.com/documentation/setup/configure/integrations/github-commit-status-review?utm_medium=rollup-plugin-stats), [GitHub Pull Request comments](https://relative-ci.com/documentation/setup/configure/integrations/github-pull-request-comment?utm_medium=rollup-plugin-stats), [GitHub check reports](https://relative-ci.com/documentation/setup/configure/integrations/github-check-report?utm_medium=rollup-plugin-stats), or [Slack messages](https://relative-ci.com/documentation/setup/configure/integrations/slack-notification?utm_medium=rollup-plugin-stats)
+- :wrench: Support for **webpack**, **vite**, **rspack**, **rollup**, **rolldwon**
 - :hammer: Support for all major CI services(CircleCI, GitHub Actions, Gitlab CI, Jenkins, Travis CI)
 - :nut_and_bolt: Support for **npm**, **yarn** and **pnpm**; support for monorepos
-- :two_hearts: **Always free** for **Open Source**
+- :two_hearts: [**Always free** for **Open Source**](https://relative-ci.com/open-source)
 
