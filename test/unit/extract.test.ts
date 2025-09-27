@@ -3,25 +3,28 @@ import deepFreeze from 'deep-freeze-strict';
 
 import extract from '../../src/extract';
 import * as rollupStats from './fixtures/rollup-stats';
+import type { OutputBundle } from 'rollup';
+
+const fixtures = (rollupStats.stats as unknown) as OutputBundle;
 
 describe('extract', () => {
   test('should extract rollup stats', () => {
-    expect(extract(deepFreeze(rollupStats.stats))).toMatchSnapshot();
+    expect(extract(deepFreeze(fixtures))).toMatchSnapshot();
   });
 
   test('should extract rollup stats with sources', () => {
-    expect(extract(deepFreeze(rollupStats.stats), { source: true })).toMatchSnapshot();
+    expect(extract(deepFreeze(fixtures), { source: true })).toMatchSnapshot();
   });
 
   test('should extract rollup stats with maps', () => {
-    expect(extract(deepFreeze(rollupStats.stats), { map: true })).toMatchSnapshot();
+    expect(extract(deepFreeze(fixtures), { map: true })).toMatchSnapshot();
   });
 
   test('should extract rollup stats with excluded assets', () => {
-    expect(extract(deepFreeze(rollupStats.stats), { excludeAssets : /vendors/ })).toMatchSnapshot();
+    expect(extract(deepFreeze(fixtures), { excludeAssets : /vendors/ })).toMatchSnapshot();
   });
 
   test('should extract rollup stats with excluded modules', () => {
-    expect(extract(deepFreeze(rollupStats.stats), { excludeModules : /utils.js/ })).toMatchSnapshot();
+    expect(extract(deepFreeze(fixtures), { excludeModules : /utils.js/ })).toMatchSnapshot();
   });
 });

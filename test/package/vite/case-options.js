@@ -2,11 +2,8 @@ import { defineConfig } from 'vite';
 import stats from 'rollup-plugin-stats';
 
 const baseConfig = {
-  root: __dirname,
-  output: {
-    dir: 'dist',
-  },
   build: {
+    outDir: 'dist',
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name][extname]',
