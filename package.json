@@ -24,29 +24,29 @@
     "stats",
     "bundle-stats"
   ],
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "typings": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
+  "typings": "dist/esm/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.js"
     },
     "./extract": {
-      "types": "./dist/extract.d.ts",
-      "import": "./dist/extract.mjs",
-      "require": "./dist/extract.cjs"
+      "types": "./dist/esm/extract.d.ts",
+      "import": "./dist/esm/extract.mjs",
+      "require": "./dist/cjs/extract.js"
     }
   },
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "rollup -c rollup.config.mjs",
+    "build": "tsdown",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test:unit": "vitest test/unit",
@@ -75,7 +75,7 @@
     "memfs": "4.51.1",
     "prettier": "3.7.4",
     "release-it": "19.2.2",
-    "rollup": "4.54.0",
+    "tsdown": "0.18.4",
     "typescript": "5.9.3",
     "typescript-eslint": "8.51.0",
     "vitest": "4.0.16"
