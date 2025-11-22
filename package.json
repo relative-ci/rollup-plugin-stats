@@ -63,22 +63,22 @@
     }
   },
   "devDependencies": {
-    "@eslint/js": "9.39.0",
-    "@release-it/conventional-changelog": "10.0.1",
+    "@eslint/js": "9.39.1",
+    "@release-it/conventional-changelog": "10.0.2",
     "@rollup/plugin-typescript": "12.3.0",
-    "@tsconfig/node18": "18.2.4",
-    "@types/node": "24.9.2",
+    "@tsconfig/node18": "18.2.6",
+    "@types/node": "24.10.1",
     "deep-freeze-strict": "1.1.1",
-    "eslint": "9.39.0",
+    "eslint": "9.39.1",
     "globals": "16.5.0",
     "husky": "8.0.3",
-    "memfs": "4.50.0",
+    "memfs": "4.51.0",
     "prettier": "3.6.2",
-    "release-it": "19.0.5",
-    "rollup": "4.52.5",
+    "release-it": "19.0.6",
+    "rollup": "4.53.3",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.2",
-    "vitest": "4.0.6"
+    "typescript-eslint": "8.47.0",
+    "vitest": "4.0.13"
   },
   "peerDependencies": {
     "rolldown": "^1.0.0-beta.0",
