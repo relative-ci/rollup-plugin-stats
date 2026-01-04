@@ -73,7 +73,7 @@
     "globals": "17.0.0",
     "husky": "8.0.3",
     "memfs": "4.51.1",
-    "prettier": "3.6.2",
+    "prettier": "3.7.4",
     "release-it": "19.2.2",
     "rollup": "4.53.3",
     "typescript": "5.9.3",
