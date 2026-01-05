@@ -59,4 +59,3 @@ function rollupStats(options: RollupStatsOptionsOrOutputOptions = {}): Plugin {
 }
 
 export default rollupStats;
-
