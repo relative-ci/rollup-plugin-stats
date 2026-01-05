@@ -33,22 +33,31 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./extract": {
-      "types": "./dist/types/extract.d.ts",
-      "import": "./dist/esm/extract.js",
-      "require": "./dist/cjs/extract.js"
+      "import": {
+        "types": "./dist/extract.d.mts",
+        "default": "./dist/extract.mjs"
+      },
+      "require": {
+        "types": "./dist/extract.d.cts",
+        "default": "./dist/extract.cjs"
+      }
     }
   },
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "npm run clean && npm run type-check && rollup -c && npm run build-esm-packages",
-    "build-esm-packages": "echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "build": "npm run clean && npm run type-check && tsdown",
     "clean": "rimraf ./dist",
     "type-check": "tsc",
     "lint": "eslint .",
@@ -69,12 +78,8 @@
   "devDependencies": {
     "@eslint/js": "9.39.2",
     "@release-it/conventional-changelog": "10.0.5",
-    "@rollup/plugin-commonjs": "^28.0.6",
-    "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-typescript": "12.3.0",
-    "@tsconfig/node18": "18.2.6",
-    "@types/node": "25.2.1",
     "@types/deep-freeze-strict": "1.1.2",
+    "@types/node": "^25.2.3",
     "deep-freeze-strict": "1.1.1",
     "eslint": "9.39.2",
     "globals": "17.3.0",
@@ -84,6 +89,7 @@
     "release-it": "19.2.4",
     "rimraf": "6.0.1",
     "rollup": "4.57.1",
+    "tsdown": "0.20.3",
     "typescript": "5.9.3",
     "typescript-eslint": "8.54.0",
     "vite": "7.3.1",
