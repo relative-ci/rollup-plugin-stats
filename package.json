@@ -26,27 +26,37 @@
   ],
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.cts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./extract": {
-      "types": "./dist/extract.d.ts",
-      "import": "./dist/extract.mjs",
-      "require": "./dist/extract.cjs"
+      "import": {
+        "types": "./dist/extract.d.mts",
+        "default": "./dist/extract.mjs"
+      },
+      "require": {
+        "types": "./dist/extract.d.cts",
+        "default": "./dist/extract.cjs"
+      }
     }
   },
   "engines": {
     "node": ">=18"
   },
   "scripts": {
-    "build": "npm run type-check && rollup -c rollup.config.mjs",
+    "build": "npm run type-check && tsdown",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test:unit": "vitest test/unit",
@@ -66,8 +76,6 @@
   "devDependencies": {
     "@eslint/js": "9.39.2",
     "@release-it/conventional-changelog": "10.0.4",
-    "@rollup/plugin-typescript": "12.3.0",
-    "@tsconfig/node18": "18.2.6",
     "@types/deep-freeze-strict": "1.1.2",
     "@types/node": "25.0.3",
     "deep-freeze-strict": "1.1.1",
@@ -77,7 +85,7 @@
     "memfs": "4.51.1",
     "prettier": "3.7.4",
     "release-it": "19.2.2",
-    "rollup": "4.54.0",
+    "tsdown": "0.18.4",
     "typescript": "5.9.3",
     "typescript-eslint": "8.51.0",
     "vitest": "4.0.16"
