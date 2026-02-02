@@ -70,7 +70,7 @@
     "@types/node": "25.0.10",
     "deep-freeze-strict": "1.1.1",
     "eslint": "9.39.2",
-    "globals": "17.1.0",
+    "globals": "17.3.0",
     "husky": "8.0.3",
     "memfs": "4.56.10",
     "prettier": "3.8.1",
