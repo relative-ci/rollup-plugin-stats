@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-stats",
-  "description": "Output Rollup stats",
+  "description": "Vite/Rolldown/Rollup plugin to generate bundle stats JSON file",
   "version": "1.5.6",
   "license": "MIT",
   "private": false,
@@ -18,10 +18,11 @@
   },
   "keywords": [
     "vite",
-    "rollup",
     "rolldown",
-    "plugin",
-    "stats",
+    "rollup",
+    "vite-plugin",
+    "rolldown-plugin",
+    "rollup-plugin",
     "bundle-stats"
   ],
   "main": "dist/index.cjs",

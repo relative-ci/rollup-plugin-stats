@@ -6,7 +6,7 @@
 [![Socket Badge](https://socket.dev/api/badge/npm/package/rollup-plugin-stats)](https://socket.dev/npm/package/rollup-plugin-stats)
 [![ci](https://github.com/relative-ci/rollup-plugin-stats/actions/workflows/ci.yml/badge.svg)](https://github.com/relative-ci/rollup-plugin-stats/actions/workflows/ci.yml)
 
-Output Rollup stats JSON file
+Vite/Rolldown/Rollup plugin to generate bundle stats JSON file
 
 ## Install
 
