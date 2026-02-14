@@ -103,7 +103,7 @@ jobs:
 
       - name: "Install test package dependencies"
         run: |
-          npm install 
+          npm install
           npm install rollup@${{ matrix.rollup }} --force
           npx rollup -v
         working-directory: test/package/rollup
@@ -147,7 +147,7 @@ jobs:
 
       - name: "Install test package dependencies"
         run: |
-          npm install 
+          npm install
           npx rolldown -v
         working-directory: test/package/rolldown
 
@@ -199,7 +199,7 @@ jobs:
 
       - name: "Install test package dependencies"
         run: |
-          npm install 
+          npm install
           npm install vite@${{ matrix.vite }} --force
           npx vite -v
         working-directory: test/package/vite

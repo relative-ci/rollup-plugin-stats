@@ -13,7 +13,7 @@ const configs = [
     },
   },
   {
-    ignores: ['dist/', 'config/'],
+    ignores: ['config/', '**/dist/'],
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
