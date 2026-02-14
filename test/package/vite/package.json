@@ -1,5 +1,5 @@
 {
-  "name": "rollup-plugin-stats-test-package-rollup",
+  "name": "rollup-plugin-stats-test-package-vite",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
