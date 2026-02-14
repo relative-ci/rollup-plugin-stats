@@ -1,14 +1,19 @@
 {
-  "name": "rollup-plugin-stats-package-test",
+  "name": "rollup-plugin-stats-test-package-rollup",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build-cjs": "vite build -c case-config.js",
+    "build-esm": "vite build -c case-config.mjs",
+    "build-ts": "vite build -c case-config.ts",
+    "test": "vitest"
+  },
   "keywords": [],
   "license": "ISC",
-  "type": "module",
   "devDependencies": {
-    "vite": "^7.0.0",
-    "rollup-plugin-stats": "*"
+    "cross-env": "^7.0.3",
+    "rollup-plugin-stats": "*",
+    "vite": "^7.0.0"
   }
 }

@@ -1,9 +1,8 @@
-import path from 'path';
 import { defineConfig } from 'rollup';
 import stats from 'rollup-plugin-stats';
 
 export default defineConfig({
-  input: path.join(__dirname, 'src/index.js'),
+  input: 'src/index.js',
   output: {
     dir: 'dist',
   },
@@ -11,7 +10,7 @@ export default defineConfig({
 });
 
 export const dynamicOptions = defineConfig({
-  input: path.join(__dirname, 'src/index.js'),
+  input: 'src/index.js',
   output: {
     dir: 'dist',
     format: 'commonjs',
@@ -22,7 +21,7 @@ export const dynamicOptions = defineConfig({
 });
 
 export const relativeFileNameConfig = defineConfig({
-  input: path.join(__dirname, 'src/index.js'),
+  input: 'src/index.js',
   output: {
     dir: 'dist',
   },
@@ -34,7 +33,7 @@ export const relativeFileNameConfig = defineConfig({
 });
 
 export const absoluteFileNameConfig = defineConfig({
-  input: path.join(__dirname, 'src/index.js'),
+  input: 'src/index.js',
   output: {
     dir: 'dist',
   },

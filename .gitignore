@@ -3,3 +3,5 @@
 node_modules
 dist
 artifacts
+test/package/*/dist
+test/package/*/package-lock.json

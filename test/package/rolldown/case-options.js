@@ -1,45 +1,44 @@
-import path from 'path';
 import { defineConfig } from 'rolldown';
-import stats from 'rollup-plugin-stats';
+import statsPlugin from 'rollup-plugin-stats';
 
 export default defineConfig({
-  input: path.join(__dirname, 'src/index.js'),
+  input: 'src/index.js',
   output: {
     dir: 'dist',
   },
-  plugins: [stats()],
+  plugins: [statsPlugin()],
 });
 
 export const dynamicOptions = defineConfig({
-  input: path.join(__dirname, 'src/index.js'),
+  input: 'src/index.js',
   output: {
     dir: 'dist',
     format: 'commonjs',
   },
-  plugins: [stats((options) => ({
+  plugins: [statsPlugin((options) => ({
     fileName: `stats.${options.format}.json`,
   }))],
 });
 
 export const relativeFileNameConfig = defineConfig({
-  input: path.join(__dirname, 'src/index.js'),
+  input: 'src/index.js',
   output: {
     dir: 'dist',
   },
   plugins: [
-    stats({
+    statsPlugin({
       fileName: '../artifacts/stats.json',
     }),
   ],
 });
 
 export const absoluteFileNameConfig = defineConfig({
-  input: path.join(__dirname, 'src/index.js'),
+  input: 'src/index.js',
   output: {
     dir: 'dist',
   },
   plugins: [
-    stats({
+    statsPlugin({
       fileName: '/tmp/custom-stats.json',
     }),
   ],
