@@ -13,7 +13,7 @@ const FILE_SIZE = {
     symbol: 'MiB',
     multiplier: 1024 * 1024,
   },
-}
+};
 
 export function formatFileSize(value?: number | null): string {
   let unit = FILE_SIZE.BYTE;

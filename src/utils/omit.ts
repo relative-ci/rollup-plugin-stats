@@ -1,6 +1,6 @@
 export function omit<D extends object, K extends keyof D = keyof D>(
   data: D,
-  keys: K[],
+  keys: K[]
 ): Omit<D, K> {
   const result = {} as D;
   const objectKeys = Object.keys(data) as Array<K>;

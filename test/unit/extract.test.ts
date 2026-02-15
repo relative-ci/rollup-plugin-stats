@@ -5,7 +5,7 @@ import extract from '../../src/extract';
 import * as rollupStats from './fixtures/rollup-stats';
 import type { OutputBundle } from 'rollup';
 
-const fixtures = (rollupStats.stats as unknown) as OutputBundle;
+const fixtures = rollupStats.stats as unknown as OutputBundle;
 
 describe('extract', () => {
   test('should extract rollup stats', () => {
@@ -21,10 +21,14 @@ describe('extract', () => {
   });
 
   test('should extract rollup stats with excluded assets', () => {
-    expect(extract(deepFreeze(fixtures), { excludeAssets : /vendors/ })).toMatchSnapshot();
+    expect(
+      extract(deepFreeze(fixtures), { excludeAssets: /vendors/ })
+    ).toMatchSnapshot();
   });
 
   test('should extract rollup stats with excluded modules', () => {
-    expect(extract(deepFreeze(fixtures), { excludeModules : /utils.js/ })).toMatchSnapshot();
+    expect(
+      extract(deepFreeze(fixtures), { excludeModules: /utils.js/ })
+    ).toMatchSnapshot();
   });
 });

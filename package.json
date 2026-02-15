@@ -51,7 +51,7 @@
     "build-esm-packages": "echo '{\"type\":\"module\"}' > dist/esm/package.json",
     "clean": "rimraf ./dist",
     "type-check": "tsc",
-    "lint": "eslint .",
+    "lint": "eslint",
     "format": "prettier --write .",
     "test:unit": "vitest test/unit",
     "test:package": "npm run test:package:rolldown && npm run test:package:rollup && npm run test:package:vite",
@@ -59,12 +59,8 @@
     "test:package:rollup": "cd test/package/rollup && npm run test",
     "test:package:vite": "cd test/package/vite && npm run test",
     "bump": "./scripts/bump.sh",
-    "release": "./scripts/release.sh"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettier && npm run lint"
-    }
+    "release": "./scripts/release.sh",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "9.39.2",
@@ -73,12 +69,14 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "12.3.0",
     "@tsconfig/node18": "18.2.6",
-    "@types/node": "25.2.1",
     "@types/deep-freeze-strict": "1.1.2",
+    "@types/node": "25.2.1",
     "deep-freeze-strict": "1.1.1",
     "eslint": "9.39.2",
+    "eslint-config-prettier": "10.1.8",
     "globals": "17.3.0",
-    "husky": "8.0.3",
+    "husky": "9.1.7",
+    "lint-staged": "16.2.7",
     "memfs": "4.56.10",
     "prettier": "3.8.1",
     "release-it": "19.2.4",
