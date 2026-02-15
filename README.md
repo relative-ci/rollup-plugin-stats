@@ -93,6 +93,26 @@ export default defineConfig({
   - `map` - output chunk map property (default: `false`)
   - `excludeAssets` - exclude matching assets: `string | RegExp | ((filepath: string) => boolean) | Array<string | RegExp | ((filepath: string) => boolean)>`
   - `excludeModules` - exclude matching modules: `string | RegExp | ((filepath: string) => boolean) | Array<string | RegExp | ((filepath: string) => boolean)>`
+  
+## Development setup
+
+### Use the project node version
+
+```shell
+nvm use
+```
+
+### Install dependencies
+
+```shell
+npm install
+```
+
+### Prepare 
+
+```shell
+npm run prepare
+```
 
 ## Related projects
 
