@@ -51,7 +51,7 @@
     "build-esm-packages": "echo '{\"type\":\"module\"}' > dist/esm/package.json",
     "clean": "rimraf ./dist",
     "type-check": "tsc",
-    "lint": "eslint .",
+    "lint": "eslint",
     "format": "prettier --write .",
     "test:unit": "vitest test/unit",
     "test:package": "npm run test:package:rolldown && npm run test:package:rollup && npm run test:package:vite",
@@ -59,12 +59,8 @@
     "test:package:rollup": "cd test/package/rollup && npm run test",
     "test:package:vite": "cd test/package/vite && npm run test",
     "bump": "./scripts/bump.sh",
-    "release": "./scripts/release.sh"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettier && npm run lint"
-    }
+    "release": "./scripts/release.sh",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "9.39.2",

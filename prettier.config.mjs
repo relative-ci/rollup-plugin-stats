@@ -5,7 +5,7 @@ export default {
   trailingComma: 'es5',
   overrides: [
     {
-      files: '*.{yml,yaml}',
+      files: '**/*.{yml,yaml}',
       options: {
         singleQuote: false,
       },

@@ -1,0 +1,6 @@
+STAGED_CHANGES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+
+npx prettier $STAGED_CHANGES --write --ignore-unknown
+npm run lint -- $STAGED_CHANGES
+
+git update-index --again
