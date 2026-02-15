@@ -4,7 +4,11 @@ import { describe, test, expect, beforeEach } from 'vitest';
 import { rolldown } from 'rolldown';
 import { vol } from 'memfs';
 
-import config, { dynamicOptions, relativeFileNameConfig, absoluteFileNameConfig } from './case-options';
+import config, {
+  dynamicOptions,
+  relativeFileNameConfig,
+  absoluteFileNameConfig,
+} from './case-options';
 
 describe('package - rolldown options', () => {
   beforeEach(() => {
@@ -15,7 +19,10 @@ describe('package - rolldown options', () => {
     const bundle = await rolldown(config);
     await bundle.generate(config.output);
 
-    const actual = await fs.readFile(path.join(config.output.dir, 'stats.json'), 'utf8');
+    const actual = await fs.readFile(
+      path.join(config.output.dir, 'stats.json'),
+      'utf8'
+    );
     const stats = JSON.parse(actual);
     expect(stats['index.js']).toMatchObject({
       fileName: 'index.js',
@@ -26,7 +33,10 @@ describe('package - rolldown options', () => {
     const bundle = await rolldown(dynamicOptions);
     await bundle.generate(dynamicOptions.output);
 
-    const actual = await fs.readFile(path.join(dynamicOptions.output.dir, 'stats.cjs.json'), 'utf8');
+    const actual = await fs.readFile(
+      path.join(dynamicOptions.output.dir, 'stats.cjs.json'),
+      'utf8'
+    );
     const stats = JSON.parse(actual);
     expect(stats['index.js']).toMatchObject({
       fileName: 'index.js',
@@ -37,7 +47,10 @@ describe('package - rolldown options', () => {
     const bundle = await rolldown(relativeFileNameConfig);
     await bundle.generate(relativeFileNameConfig.output);
 
-    const actual = await fs.readFile(path.join(relativeFileNameConfig.output.dir, '../artifacts/stats.json'), 'utf8');
+    const actual = await fs.readFile(
+      path.join(relativeFileNameConfig.output.dir, '../artifacts/stats.json'),
+      'utf8'
+    );
     const stats = JSON.parse(actual);
 
     expect(stats['index.js']).toMatchObject({

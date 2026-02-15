@@ -16,7 +16,7 @@ export const stats = {
         code: 'export default function () {}',
       },
     },
-    map: { version: "3" },
+    map: { version: '3' },
   },
   'assets/vendors.abcd1234.js': {
     fileName: 'assets/vendors.abcd1234.js',
@@ -30,6 +30,6 @@ export const stats = {
         code: 'export default function () {}',
       },
     },
-    map: { version: "3" },
+    map: { version: '3' },
   },
 };

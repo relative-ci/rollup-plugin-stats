@@ -15,9 +15,11 @@ export const dynamicOptions = defineConfig({
     dir: 'dist',
     format: 'commonjs',
   },
-  plugins: [statsPlugin((options) => ({
-    fileName: `stats.${options.format}.json`,
-  }))],
+  plugins: [
+    statsPlugin((options) => ({
+      fileName: `stats.${options.format}.json`,
+    })),
+  ],
 });
 
 export const relativeFileNameConfig = defineConfig({

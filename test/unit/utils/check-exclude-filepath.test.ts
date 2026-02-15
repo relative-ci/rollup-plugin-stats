@@ -4,7 +4,10 @@ import { checkExcludeFilepath } from '../../../src/utils/check-exclude-filepath'
 
 describe('utils', () => {
   describe('checkExcludeFilepath', () => {
-    const testCases: Array<{ input: Parameters<typeof checkExcludeFilepath>; output: ReturnType<typeof checkExcludeFilepath>}> = [
+    const testCases: Array<{
+      input: Parameters<typeof checkExcludeFilepath>;
+      output: ReturnType<typeof checkExcludeFilepath>;
+    }> = [
       {
         input: ['./assets/vendor.js'],
         output: false,
@@ -37,7 +40,7 @@ describe('utils', () => {
 
     testCases.forEach(({ input, output }) => {
       test(`Should return "${output}" when called with: "${input.join('", "')}"`, () => {
-          expect(checkExcludeFilepath(...input)).toEqual(output);
+        expect(checkExcludeFilepath(...input)).toEqual(output);
       });
     });
   });

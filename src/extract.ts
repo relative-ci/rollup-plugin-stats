@@ -1,25 +1,41 @@
-import type { OutputAsset, OutputBundle, OutputChunk, RenderedModule } from 'rollup';
+import type {
+  OutputAsset,
+  OutputBundle,
+  OutputChunk,
+  RenderedModule,
+} from 'rollup';
 import { omit } from './utils/omit';
-import { type ExcludeFilepathPatterns, checkExcludeFilepath } from './utils/check-exclude-filepath';
+import {
+  type ExcludeFilepathPatterns,
+  checkExcludeFilepath,
+} from './utils/check-exclude-filepath';
 
 export type AssetStatsOptionalProperties = {
   source?: OutputAsset['source'];
 };
 
-export type AssetStats = Omit<OutputAsset, keyof AssetStatsOptionalProperties> & AssetStatsOptionalProperties;
+export type AssetStats = Omit<OutputAsset, keyof AssetStatsOptionalProperties> &
+  AssetStatsOptionalProperties;
 
 export type ModuleStatsOptionalProperties = {
   code?: RenderedModule['code'] | null;
 };
 
-export type ModuleStats = Omit<RenderedModule, keyof ModuleStatsOptionalProperties> & ModuleStatsOptionalProperties;
+export type ModuleStats = Omit<
+  RenderedModule,
+  keyof ModuleStatsOptionalProperties
+> &
+  ModuleStatsOptionalProperties;
 
 export type ChunkStatsOptionalProperties = {
   code?: OutputChunk['code'];
-  map?: OutputChunk['map']; 
+  map?: OutputChunk['map'];
 };
 
-export type ChunkStats = Omit<OutputChunk, keyof ChunkStatsOptionalProperties | 'modules'> & {
+export type ChunkStats = Omit<
+  OutputChunk,
+  keyof ChunkStatsOptionalProperties | 'modules'
+> & {
   modules: Record<string, ModuleStats>;
 } & ChunkStatsOptionalProperties;
 
@@ -28,12 +44,12 @@ export type Stats = Record<string, AssetStats | ChunkStats>;
 export type StatsOptions = {
   /**
    * Output asset/module sources
-   * @default false 
+   * @default false
    */
   source?: boolean;
   /**
    * Output chunk map
-   * @default false 
+   * @default false
    */
   map?: boolean;
   /**
@@ -44,7 +60,7 @@ export type StatsOptions = {
    * Exclude matching modules
    */
   excludeModules?: ExcludeFilepathPatterns;
-}
+};
 
 /**
  * Extract bundler stats
@@ -55,8 +71,16 @@ export type StatsOptions = {
  *
  * @NOTE structuredClone is not supported by rolldown-vite: https://github.com/vitejs/rolldown-vite/issues/128
  */
-export default function extractRollupStats(bundle: OutputBundle, options: StatsOptions = {}): Stats {
-  const { source = false, map = false, excludeAssets, excludeModules } = options;
+export default function extractRollupStats(
+  bundle: OutputBundle,
+  options: StatsOptions = {}
+): Stats {
+  const {
+    source = false,
+    map = false,
+    excludeAssets,
+    excludeModules,
+  } = options;
 
   const output: Stats = {};
 
@@ -66,23 +90,23 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
       return;
     }
 
-    if (bundleEntryStats.type === "asset") {
+    if (bundleEntryStats.type === 'asset') {
       const assetStatsOmitKeys: Array<keyof AssetStatsOptionalProperties> = [];
 
       // Skip asset source if options.source is false
       if (!source) {
-        assetStatsOmitKeys.push('source'); 
+        assetStatsOmitKeys.push('source');
       }
 
       output[bundleEntryFilepath] = omit(
         bundleEntryStats,
-        assetStatsOmitKeys,
+        assetStatsOmitKeys
       ) as AssetStats;
 
       return;
     }
 
-    if (bundleEntryStats.type === "chunk") {
+    if (bundleEntryStats.type === 'chunk') {
       const chunkStatsOmitKeys: Array<keyof ChunkStatsOptionalProperties> = [];
 
       // Skip chunk source if options.source is false
@@ -95,30 +119,36 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
         chunkStatsOmitKeys.push('map');
       }
 
-      const chunkStats = omit(bundleEntryStats, chunkStatsOmitKeys) as ChunkStats;
-
+      const chunkStats = omit(
+        bundleEntryStats,
+        chunkStatsOmitKeys
+      ) as ChunkStats;
 
       // Extract chunk modules stats
       const chunkModulesStats: ChunkStats['modules'] = {};
 
-      Object.entries(chunkStats.modules).forEach(([bundleModuleFilepath, bundleModuleStats]) => {
-        // Skip module extraction if the filepath matches the exclude modules pattern
-        if (checkExcludeFilepath(bundleModuleFilepath, excludeModules)) {
-          return;
+      Object.entries(chunkStats.modules).forEach(
+        ([bundleModuleFilepath, bundleModuleStats]) => {
+          // Skip module extraction if the filepath matches the exclude modules pattern
+          if (checkExcludeFilepath(bundleModuleFilepath, excludeModules)) {
+            return;
+          }
+
+          const moduleStatsOmitKeys: Array<
+            keyof ModuleStatsOptionalProperties
+          > = [];
+
+          // Skip module source if options.source is false
+          if (!source) {
+            moduleStatsOmitKeys.push('code');
+          }
+
+          chunkModulesStats[bundleModuleFilepath] = omit(
+            bundleModuleStats,
+            moduleStatsOmitKeys
+          ) as ModuleStats;
         }
-
-        const moduleStatsOmitKeys: Array<keyof ModuleStatsOptionalProperties> = [];
-
-        // Skip module source if options.source is false
-        if (!source) {
-          moduleStatsOmitKeys.push('code');
-        }
-
-        chunkModulesStats[bundleModuleFilepath] = omit(
-          bundleModuleStats,
-          moduleStatsOmitKeys,
-        ) as ModuleStats;
-      });
+      );
 
       chunkStats.modules = chunkModulesStats;
 
@@ -127,6 +157,6 @@ export default function extractRollupStats(bundle: OutputBundle, options: StatsO
       return;
     }
   });
-  
+
   return output;
 }

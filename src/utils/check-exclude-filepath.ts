@@ -1,13 +1,15 @@
 type ExcludeFilepathParam = string | RegExp | ((filepath: string) => boolean);
 
-export type ExcludeFilepathPatterns = ExcludeFilepathParam | Array<ExcludeFilepathParam>;
+export type ExcludeFilepathPatterns =
+  | ExcludeFilepathParam
+  | Array<ExcludeFilepathParam>;
 
 /**
  * Check if filepath should be excluded based on patterns
  */
 export function checkExcludeFilepath(
   filepath: string,
-  patterns?: ExcludeFilepathPatterns,
+  patterns?: ExcludeFilepathPatterns
 ): boolean {
   if (!patterns) {
     return false;

@@ -1,3 +1,3 @@
 export function sayA() {
-  console.log("Hello from ModuleA!");
+  console.log('Hello from ModuleA!');
 }
