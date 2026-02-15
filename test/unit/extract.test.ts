@@ -2,8 +2,8 @@ import { describe, test, expect } from 'vitest';
 import deepFreeze from 'deep-freeze-strict';
 
 import extract from '../../src/extract';
+import type { OutputBundle } from '../../src/types';
 import * as rollupStats from './fixtures/rollup-stats';
-import type { OutputBundle } from 'rollup';
 
 const fixtures = rollupStats.stats as unknown as OutputBundle;
 
