@@ -69,7 +69,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "12.3.0",
     "@tsconfig/node18": "18.2.6",
-    "@types/node": "25.2.3",
+    "@types/node": "25.3.0",
     "@types/deep-freeze-strict": "1.1.2",
     "@types/node": "25.2.3",
     "deep-freeze-strict": "1.1.1",
