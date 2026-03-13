@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@release-it/conventional-changelog": "10.0.5",
+    "@release-it/conventional-changelog": "10.0.6",
     "@types/deep-freeze-strict": "1.1.2",
     "@types/node": "25.5.0",
     "deep-freeze-strict": "1.1.1",
