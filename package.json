@@ -77,7 +77,7 @@
     "@types/deep-freeze-strict": "1.1.2",
     "@types/node": "25.5.0",
     "deep-freeze-strict": "1.1.1",
-    "eslint": "10.0.3",
+    "eslint": "10.1.0",
     "eslint-config-prettier": "10.1.8",
     "globals": "17.4.0",
     "husky": "9.1.7",
