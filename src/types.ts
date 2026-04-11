@@ -54,7 +54,7 @@ export type OutputChunk = {
   facadeModuleId: string | null;
   /** Whether this chunk is a dynamic entry point (i.e. produced by a dynamic `import()`). */
   isDynamicEntry: boolean;
-  /** Whether this chunk is a static entry point declared in the Vite, Rolldown, Rollup input options. */
+  /** Whether this chunk is a static entry point declared in the Vite/RollDown/Rollup input options. */
   isEntry: boolean;
   /**
    * The chunk name as used in `chunkFileNames` and `entryFileNames` patterns,
@@ -92,7 +92,7 @@ export type OutputChunk = {
  */
 export type RenderedModule = {
   /**
-   * The module code that Vite, Rolldown or Rollup included in the bundle, or `null` when the
+   * The module code that Vite/Rolldown/Rollup included in the bundle, or `null` when the
    * module was fully tree-shaken.
    */
   readonly code: string | null;
@@ -127,34 +127,58 @@ type SourceMap = {
 };
 
 /**
- * The complete output bundle produced by Vite, Rolldown or Rollup — a map from emitted file name
+ * The complete output bundle produced by Vite/Rolldown/Rollup — a map from emitted file name
  * to its corresponding asset or chunk descriptor.
  */
 export type OutputBundle = Record<string, OutputAsset | OutputChunk>;
 
 /**
- * Relevant subset of Vite, Rolldown, Rollup's output options passed to the `generateBundle` hook.
+ * A subset of resolved output options provided to the `generateBundle` hook by Vite/Rolldown/Rollup,
+ *  containing only the fields this plugin uses to generate a stats file for a specific output.
  *
  * @example
- * { dir: 'dist' }
+ * { dir: 'dist', format: 'es' }
  */
 export type OutputOptions = {
   /** Output directory for the generated files. */
-  dir?: string;
+  dir?: string | undefined;
+
+  /**
+   * Output format.
+   *
+   * - `'es'` / `'esm'` / `'module'` — ES module
+   * - `'cjs'` / `'commonjs'`        — CommonJS
+   * - `'iife'`                       — Immediately Invoked Function Expression
+   * - `'umd'`                        — Universal Module Definition
+   * - `'amd'`                        — Asynchronous Module Definition (Rollup only)
+   * - `'system'` / `'systemjs'`      — SystemJS (Rollup only)
+   */
+  format?:
+    | 'es'
+    | 'esm'
+    | 'module'
+    | 'cjs'
+    | 'commonjs'
+    | 'iife'
+    | 'umd'
+    | 'amd'
+    | 'system'
+    | 'systemjs'
+    | undefined;
 };
 
 /**
- * Subset of the Vite, Rolldown, Rollup plugin hook context (`this`) used by this plugin.
+ * Subset of the Vite/RollDown/Rollup plugin hook context (`this`) used by this plugin.
  */
 type PluginContext = {
-  /** Log an informational message through Vite, Rolldown, Rollup's logging pipeline. */
+  /** Log an informational message through Vite/RollDown/Rollup's logging pipeline. */
   info: (message: string) => void;
   /** Log a warning through bundler's logging pipeline without stopping the build. */
   warn: (message: string) => void;
 };
 
 /**
- * Minimum plugin interface compatible with Vite, Rolldown and Rollup.
+ * Minimum plugin interface compatible with Vite/Rolldown/Rollup.
  *
  * @example
  * {
