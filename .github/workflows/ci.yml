@@ -148,6 +148,7 @@ jobs:
       - name: "Install test package dependencies"
         run: |
           npm install
+          npm install rolldown
           npx rolldown -v
         working-directory: test/package/rolldown
 
