@@ -1,14 +1,15 @@
+import { omit } from './utils/omit';
+
+import {
+  type ExcludeFilepathPatterns,
+  checkExcludeFilepath,
+} from './utils/check-exclude-filepath';
 import type {
   OutputAsset,
   OutputBundle,
   OutputChunk,
   RenderedModule,
-} from 'rollup';
-import { omit } from './utils/omit';
-import {
-  type ExcludeFilepathPatterns,
-  checkExcludeFilepath,
-} from './utils/check-exclude-filepath';
+} from './types';
 
 export type AssetStatsOptionalProperties = {
   source?: OutputAsset['source'];
