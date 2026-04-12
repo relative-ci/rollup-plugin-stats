@@ -79,7 +79,7 @@
     "deep-freeze-strict": "1.1.1",
     "eslint": "10.2.0",
     "eslint-config-prettier": "10.1.8",
-    "globals": "17.4.0",
+    "globals": "17.5.0",
     "husky": "9.1.7",
     "lint-staged": "16.4.0",
     "memfs": "4.57.1",
