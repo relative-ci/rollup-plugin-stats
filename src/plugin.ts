@@ -13,7 +13,7 @@ const DEFAULT_FILE_NAME = 'stats.json';
  * A subset of resolved output options provided to the `generateBundle` hook by Vite/Rolldown/Rollup,
  * containing only the fields this plugin uses to generate a stats file for a specific output.
  */
-export type OutputOptions = {
+export type RollupStatsOutputOptions = {
   /** Output directory for the generated files. */
   dir?: string | undefined;
 
@@ -35,7 +35,7 @@ export type OutputOptions = {
 /**
  * Subset of the Vite/Rolldown/Rollup plugin hook context (`this`) used by this plugin.
  */
-type PluginContext = {
+export type RollupStatsPluginContext = {
   /** Log an informational message through Vite/Rolldown/Rollup's logging pipeline. */
   info: (message: string) => void;
 
@@ -52,7 +52,7 @@ type PluginContext = {
  *   async generateBundle(outputOptions, bundle) { ... },
  * }
  */
-export type Plugin = {
+export type RollupStatsPlugin = {
   /** Unique identifier for the plugin, used in error messages and logs. */
   name: string;
 
@@ -62,8 +62,8 @@ export type Plugin = {
    * output bundle map.
    */
   generateBundle?: (
-    this: PluginContext,
-    outputOptions: OutputOptions,
+    this: RollupStatsPluginContext,
+    outputOptions: RollupStatsOutputOptions,
     bundle: OutputBundle,
     isWrite: boolean
   ) => void | Promise<void>;
@@ -88,11 +88,11 @@ export type RollupStatsOptions = {
 
 export type RollupStatsOptionsOrOutputOptions =
   | RollupStatsOptions
-  | ((outputOptions: OutputOptions) => RollupStatsOptions);
+  | ((outputOptions: RollupStatsOutputOptions) => RollupStatsOptions);
 
 export function rollupStats(
   options: RollupStatsOptionsOrOutputOptions = {}
-): Plugin {
+): RollupStatsPlugin {
   return {
     name: PLUGIN_NAME,
     async generateBundle(context, bundle) {
@@ -126,5 +126,5 @@ export function rollupStats(
         this.warn(message);
       }
     },
-  } satisfies Plugin;
+  } satisfies RollupStatsPlugin;
 }

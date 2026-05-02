@@ -1,7 +1,10 @@
 import { rollupStats } from './plugin';
 
 export type {
+  RollupStatsPlugin,
+  RollupStatsPluginContext,
   RollupStatsOptions,
+  RollupStatsOutputOptions,
   RollupStatsOptionsOrOutputOptions,
 } from './plugin';
 
