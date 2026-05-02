@@ -6,6 +6,10 @@
 [![Socket Badge](https://socket.dev/api/badge/npm/package/rollup-plugin-stats)](https://socket.dev/npm/package/rollup-plugin-stats)
 [![ci](https://github.com/relative-ci/rollup-plugin-stats/actions/workflows/ci.yml/badge.svg)](https://github.com/relative-ci/rollup-plugin-stats/actions/workflows/ci.yml)
 
+[![Vite compatibility](https://registry.vite.dev/api/badges?package=rollup-plugin-stats&tool=vite)](https://npmx.dev/package/rollup-plugin-stats)
+[![Rolldown compatibility](https://registry.vite.dev/api/badges?package=rollup-plugin-stats&tool=rolldown)](https://npmx.dev/package/rollup-plugin-stats)
+[![Rollup compatibility](https://registry.vite.dev/api/badges?package=rollup-plugin-stats&tool=rollup)](https://npmx.dev/package/rollup-plugin-stats)
+
 Vite/Rolldown/Rollup plugin to generate bundle stats JSON file
 
 ## Install
@@ -93,7 +97,7 @@ export default defineConfig({
   - `map` - output chunk map property (default: `false`)
   - `excludeAssets` - exclude matching assets: `string | RegExp | ((filepath: string) => boolean) | Array<string | RegExp | ((filepath: string) => boolean)>`
   - `excludeModules` - exclude matching modules: `string | RegExp | ((filepath: string) => boolean) | Array<string | RegExp | ((filepath: string) => boolean)>`
-  
+
 ## Development setup
 
 ### Use the project node version
@@ -108,7 +112,7 @@ nvm use
 npm install
 ```
 
-### Prepare 
+### Prepare
 
 ```shell
 npm run prepare
