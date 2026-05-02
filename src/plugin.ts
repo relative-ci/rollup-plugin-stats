@@ -41,6 +41,12 @@ export type RollupStatsPluginContext = {
 
   /** Log a warning through Vite/Rolldown/Rollup's logging pipeline without stopping the build. */
   warn: (message: string) => void;
+
+  /** Log an error message through Vite/Rolldown/Rollup's logging pipeline without stopping the build. */
+  error: (message: string) => void;
+
+  /** Log a debug message through Vite/Rolldown/Rollup's logging pipeline without stopping the build. */
+  debug: (message: string) => void;
 };
 
 /**
