@@ -82,7 +82,7 @@
     "globals": "17.6.0",
     "husky": "9.1.7",
     "lint-staged": "17.0.7",
-    "memfs": "4.57.3",
+    "memfs": "4.57.6",
     "prettier": "3.8.3",
     "release-it": "20.0.1",
     "rimraf": "6.1.3",
