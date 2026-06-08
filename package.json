@@ -75,7 +75,7 @@
     "@eslint/js": "10.0.1",
     "@release-it/conventional-changelog": "11.0.1",
     "@types/deep-freeze-strict": "1.1.2",
-    "@types/node": "25.9.1",
+    "@types/node": "25.9.2",
     "deep-freeze-strict": "1.1.1",
     "eslint": "10.4.1",
     "eslint-config-prettier": "10.1.8",
