@@ -5,7 +5,7 @@ export default defineConfig({
     index: './src/index.ts',
     extract: './src/extract.ts',
   },
-  format: ['esm', 'cjs'],
+  format: 'esm',
   dts: true,
   unbundle: true,
   hash: false,

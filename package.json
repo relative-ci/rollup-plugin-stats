@@ -25,32 +25,19 @@
     "rollup-plugin",
     "bundle-stats"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "typings": "./dist/index.d.cts",
+  "main": "./dist/index.mjs",
+  "typings": "./dist/index.d.mjs",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     },
     "./extract": {
-      "import": {
-        "types": "./dist/extract.d.mts",
-        "default": "./dist/extract.mjs"
-      },
-      "require": {
-        "types": "./dist/extract.d.cts",
-        "default": "./dist/extract.cjs"
-      }
+      "types": "./dist/extract.d.mts",
+      "import": "./dist/extract.mjs"
     }
   },
   "engines": {
