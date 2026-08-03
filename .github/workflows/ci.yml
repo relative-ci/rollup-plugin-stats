@@ -45,7 +45,7 @@ jobs:
         uses: "relative-ci/.github/actions/setup-node-npm@v1.2.0"
 
       - name: "Build"
-        run: yarn run build
+        run: npm run build
 
       - name: "Upload build files"
         uses: actions/upload-artifact@v7.0.1
