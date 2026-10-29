@@ -1,6 +1,7 @@
 #!/bin/bash
 
-npm install -g verdaccio
+# verdaccio v7 requires node >= 24, keep v6 while testing node 22
+npm install -g verdaccio@6
 npx verdaccio --config ./verdaccio.yml &
 
 sleep 10
